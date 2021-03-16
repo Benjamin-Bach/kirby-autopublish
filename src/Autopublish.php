@@ -14,8 +14,11 @@ class Autopublish {
             return $publishTime->getTimestamp() < time();
         });
 
+        // kirbylog()->log('test');
+        //kirbylog()->log('collection', 'debug', $pagesToPublish);
+
         // Publish pages which are due
-        kirby()->impersonate("kirby");
+        // kirby()->impersonate("kirby");
         foreach($pagesToPublish as $p) {
             try {
                 $p->changeStatus("listed");
@@ -36,6 +39,7 @@ class Autopublish {
     {
         $pmcCache = kirby()->cache("bvdputte.kirbyAutopublish.poormanscron");
         $lastRun = $pmcCache->get("lastrun");
+
 
         if ($lastRun === null) {
             self::publish();
