@@ -18,4 +18,5 @@ $kirby = new Kirby([
 
 // Work the queue
 Autopublish::publish();
+Autopublish::unpublish();
 exit();
